@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block title %} A Watcher  || Shop {% endblock %} 
+
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/user/shop.css' %}"> {% endblock %}
+
+{% block content %}
+<main>
+    <div class="first-container"></div>
+    <div class="second-container">
+      <div class="container">
+        <div class="row mb-5 our-shop">
+          <div class="col-12 mb-3">
+            <ul class="d-flex justify-content-around">
+              <li class=""><a href="">All Product</a></li>
+              <li class=""><a href="">Newest</a></li>
+              <li class=""><a href="">Oldest</a></li>
+              <li class=""><a href="">Sale</a></li>
+            </ul>
+
+            <hr />
+          </div>
+        </div>
+        <div class="row mb-5 shop-list">
+
+            {%for products in product%}
+            <div class="col-lg-4 col-md-6">
+                <div>
+                    <div class="watch">
+                        <img src="/{{products.product_image}}" alt="">
+                    </div>
+                    <div class="info text-center">
+                      <h2>{{products.product_name}}</h2>
+                      <p><b>$ {{products.product_price}}</b></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

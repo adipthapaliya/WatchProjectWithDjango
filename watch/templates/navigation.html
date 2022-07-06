@@ -17,12 +17,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="menu-option navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active fs-5" aria-current="page" href="./index.html"
+                <a class="nav-link active fs-5" aria-current="page" href="/home"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-5" href="./about.html">About Us</a>
+                <a class="nav-link fs-5" href="/about">About Us</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -49,7 +49,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-5" href="./contact.html">Contact Us</a>
+                <a class="nav-link fs-5" href="/contact">Contact Us</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -71,6 +71,33 @@
                   ></i>
                 </a>
               </li>
+              {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fs-5"
+                  href="./shop.html"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{request.user.username}}
+                </a>
+                <ul
+                  class="dropdown-menu bg-dark"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item text-light" href="#">Cart</a></li>
+                  <li><a class="dropdown-item text-light" href="#">Info</a></li>
+                  <li >
+                   
+                    <a class="dropdown-item text-light" href="/user/logout"
+                      >logout </a
+                    >
+                  </li>
+
+                {% else %}
+              </li>
               <li class="nav-iteam">
                 <a href="" class="nav-link"
                   ><i
@@ -80,6 +107,8 @@
                   ></i
                 ></a>
               </li>
+
+              {% endif %}
             </ul>
           </div>
         </div>

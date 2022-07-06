@@ -1,0 +1,52 @@
+
+  /* Main  */
+
+  .first-container{
+    background-image: url(../../images/shop/pocket-watch-1637396.jpg);
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.second-container{
+    margin: 10vh 0;
+}
+
+.our-shop li{
+    list-style: none;
+}
+
+.our-shop li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: all 100ms ease-in-out;
+}
+
+.our-shop li:first-child a{
+    color: #f33f3f;
+    font-size: 1.1rem;
+}
+
+.our-shop li:not(.our-shop li:first-child) a:hover{
+    color: #f33f3f;
+    font-size: 1.1rem;
+}
+
+.watch{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.watch img{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.info p {
+    color: #f33f3f;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+  }
+  

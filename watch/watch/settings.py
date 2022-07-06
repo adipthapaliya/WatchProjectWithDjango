@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'item.apps.ItemConfig',
     'user.apps.UserConfig',
+    'adminapp.apps.AdminappConfig'
 
 ]
 
