@@ -29,3 +29,8 @@ def update(request,id):
     form.save()
 
     return redirect('/admin/item') 
+
+def details(request,id):
+    data = ProductModel.objects.get(id=id)
+
+    return render(request,'user/details.html',{'data':data})

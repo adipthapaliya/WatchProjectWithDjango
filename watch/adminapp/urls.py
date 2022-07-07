@@ -23,6 +23,10 @@ urlpatterns = [
     path('index',views.index),
     path('additem',views.item),
     path('item',views.viewitem),
+    path('message',views.message),
+
+    path('getmessage',views.getmessage),
+
 
     
 

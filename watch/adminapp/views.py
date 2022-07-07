@@ -1,5 +1,6 @@
 import imp
-from django.shortcuts import render
+import re
+from django.shortcuts import render,redirect
 
 # Create your views here.
 from django.contrib.auth.models import User
@@ -7,7 +8,8 @@ from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
 
 from item.models import ProductModel
-
+from adminapp.form import MessageForm
+from adminapp.models import MessageModel
 
 
 
@@ -28,5 +30,15 @@ def item(request):
 def viewitem(request):
     product= ProductModel.objects.all()
     return render(request,'admin/item.html',{'product' : product})
+
+def message(request):
+    message = MessageModel.objects.all()
+    return render(request,'admin/message.html',{'message':message})
+
+def getmessage(request):
+    data = MessageForm(request.POST)
+    data.save()
+
+    return redirect('/contact') 
 
 

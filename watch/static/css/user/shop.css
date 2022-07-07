@@ -2,7 +2,7 @@
   /* Main  */
 
   .first-container{
-    background-image: url(../../images/shop/pocket-watch-1637396.jpg);
+    background-image: url(../../image/shop/pocket-watch-1637396.jpg);
     height: 50vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,4 +49,6 @@
     font-size: 1.1rem;
     margin-bottom: 25px;
   }
+
+
   
