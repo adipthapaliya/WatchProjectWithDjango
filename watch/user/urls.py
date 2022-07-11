@@ -27,8 +27,17 @@ urlpatterns = [
     path('user/register',views.register),
     path('user/register/registerUser',views.register_user),
     path('user/login/loginUser',views.login_user),
-    path('user/logout',views.log_out)
+    path('user/logout',views.log_out),
+    path('user/cart',views.login),
 
+    path('user/buy',views.login),
+
+    path('user/add-to-cart/<int:id>/<int:uid>',views.addtocart),
+    path('user/cart/<int:id>',views.cart),
+
+    path('user/buynow/<int:id>',views.buynow),
+
+    path('user/cart_product_delete/<int:id>/<int:uid>',views.delete_cart),
 
 
 

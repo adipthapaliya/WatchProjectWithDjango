@@ -1,9 +1,12 @@
+from urllib import request
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
 
 from item.models import ProductModel
+from user.models import UserCartModel
+from user.form import CartForm
 
 
 
@@ -69,3 +72,33 @@ def log_out(request):
 def shop(request):
     product= ProductModel.objects.all()
     return render(request,'user/shop.html',{'product' : product})
+
+def addtocart(request,id,uid):
+    data =  UserCartModel(product_id_id=id, user_if_id=uid )
+    data.save()
+
+    cart = UserCartModel.objects.filter(user_if_id=id)
+    return redirect('/user/cart/1')
+
+
+def  buynow(request,id):
+    pass
+
+
+def cart(request,id):
+
+    cart = UserCartModel.objects.filter(user_if_id=id)
+    item = ProductModel.objects.all()
+    return render(request,'user/cart.html',{'cart':cart,'item':item})
+
+
+def delete_cart(request,id,uid):
+        data = UserCartModel.objects.filter(product_id_id=id,user_if_id=uid)
+        data.delete()
+
+        cart = UserCartModel.objects.filter(user_if_id=id)
+        item = ProductModel.objects.all()
+        return redirect('/user/cart/1')
+
+
+

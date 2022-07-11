@@ -24,7 +24,6 @@ urlpatterns = [
     path('details/<int:id>',views.details),
 
 
-
     
     
     

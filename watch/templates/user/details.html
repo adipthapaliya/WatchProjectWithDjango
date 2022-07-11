@@ -33,13 +33,29 @@
                             <span class="plus"></span>
                           </div>
                       </div>
+                      {% if request.user.is_authenticated %}
+                    
                       <div>
-                          <button type="button" class="btn btn-dark add-to-cart" >Add To Cart</button>
+
+                          <a href="/user/add-to-cart/{{data.id}}/{{user.id}}"><button type="button" class="btn btn-dark add-to-cart" >Add To Cart</button></a>
                       </div>
                       <div>
-                          <button type="button" class="btn btn-primary " >Buy Now</button>
+                          <a href="/user/buynow/{{data.id}}"><button type="button" class="btn btn-primary " >Buy Now</button></a>
 
                       </div>
+
+                      {% else %}
+
+                      <div>
+
+                        <a href="/user/cart"><button type="button" class="btn btn-dark add-to-cart" >Add To Cart</button></a>
+                    </div>
+                    <div>
+                        <a href="/user/buy"><button type="button" class="btn btn-primary " >Buy Now</button></a>
+
+                    </div>
+
+                    {% endif %}
                       
                   </div>
                   <hr>

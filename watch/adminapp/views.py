@@ -1,6 +1,7 @@
 import imp
 import re
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.contrib.auth.models import User
@@ -19,18 +20,20 @@ from adminapp.models import MessageModel
 def login(request):
     return render(request,'admin/login/login.html')
 
+@login_required(login_url='/admin')
 def index(request):
     return render(request,'admin/index.html')
 
+@login_required(login_url='/admin')
 def item(request):
-    product = ProductModel.objects.none()
+    return render(request,'admin/additem.html')
 
-    return render(request,'admin/additem.html',{'product':product})
-
+@login_required(login_url='/admin')
 def viewitem(request):
     product= ProductModel.objects.all()
     return render(request,'admin/item.html',{'product' : product})
 
+@login_required(login_url='/admin')
 def message(request):
     message = MessageModel.objects.all()
     return render(request,'admin/message.html',{'message':message})
@@ -41,4 +44,28 @@ def getmessage(request):
 
     return redirect('/contact') 
 
+def login_superuser(request):
 
+        username= request.POST['username']
+        password= request.POST['password']
+
+        user = authenticate(request,username=username, password=password)
+
+        
+        if user is not None:
+            log(request,user)
+
+            if user.is_superuser == 1:
+                print('here')
+
+                return redirect('/admin/home')
+
+            else:
+                return redirect('/admin')
+
+        else:
+            return redirect('/admin')
+    
+def log_out(request):
+    logout(request)
+    return redirect('/admin')

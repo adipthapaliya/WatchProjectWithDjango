@@ -27,7 +27,7 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle fs-5"
-                  href="./shop.html"
+                  href="/shop"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -62,8 +62,11 @@
               <button class="btn btn-light" type="submit">Search</button>
             </form>
             <ul class="navbar-nav" style="width: 8vw">
+              {% if request.user.is_authenticated %}
+
               <li class="nav-iteam">
-                <a href="" class="nav-link"
+
+                <a href="/user/cart/{{user.id}}" class="nav-link"
                   ><i
                     class="fa fa-shopping-cart"
                     style="font-size: 1.6rem"
@@ -71,11 +74,25 @@
                   ></i>
                 </a>
               </li>
+              {%else%}
+
+              <li class="nav-iteam">
+
+                <a href="/user/login" class="nav-link"
+                  ><i
+                    class="fa fa-shopping-cart"
+                    style="font-size: 1.6rem"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </li>
+
+              {%endif%}
               {% if request.user.is_authenticated %}
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle fs-5"
-                  href="./shop.html"
+                  href=""
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -87,7 +104,7 @@
                   class="dropdown-menu bg-dark"
                   aria-labelledby="navbarDropdown"
                 >
-                  <li><a class="dropdown-item text-light" href="#">Cart</a></li>
+                  <li><a class="dropdown-item text-light" href="/user/cart/{{request.user.id}}">Cart</a></li>
                   <li><a class="dropdown-item text-light" href="#">Info</a></li>
                   <li >
                    
@@ -99,7 +116,7 @@
                 {% else %}
               </li>
               <li class="nav-iteam">
-                <a href="" class="nav-link"
+                <a href="/user/login" class="nav-link"
                   ><i
                     class="fa fa-user"
                     style="font-size: 1.6rem"

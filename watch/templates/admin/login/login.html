@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>How To Create Simple Login Form Design In Bootstrap 5</title>
+    <title>Admin Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <!-- Bootstrap CSS -->
@@ -13,7 +13,8 @@
         <div class="row d-flex  align-items-center"  style="height: 100%; ">
             <div class="col-md-4 offset-md-4">
                 <div class="login-form bg-white  mt-4 " style="padding: 5vh 3vw;">
-                    <form action="" method="" class="row g-3">
+                    <form action="/admin/login/superuser" method="post" class="row g-3">
+                        {% csrf_token %}
                         <h4>Admin Login</h4>
                         <div class="col-12">
                             <label>Username</label>
@@ -25,7 +26,7 @@
                         </div>
                         
                         <div class="col-12">
-                            <button type="submit" class="btn btn-dark float-end">Login</button>
+                            <input type="submit" class="btn btn-dark float-end" value="Log In"></input>
                         </div>
                     </form>
                     <hr class="mt-4">

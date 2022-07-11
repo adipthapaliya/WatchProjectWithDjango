@@ -1,5 +1,7 @@
+
 .navbar-nav {
     margin: 0 auto !important;
+    z-index: 99999999;
   }
   .navbar-nav > li {
     padding: 0 18px;

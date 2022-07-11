@@ -21,7 +21,7 @@
 
 <main class="">
 
-    {% if product is None %}
+    <!-- {% if product is None %} -->
     <div class="container main-container">
         <div class="row text-white">
             <div class="col-12">
@@ -56,11 +56,11 @@
       
                     <div class="col-lg-6">
                         <figure class="figure mt-5 mb-3">
-                            <img src="{% static 'image/item/download.svg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                            <img  id="output-image" src="{% static 'image/item/download.svg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                             <figcaption class="figure-caption text-center">A caption for the above image.</figcaption>
                           </figure>
 
-                          <input type="file" name="product_image" id="image" class="form-control btn btn-primary">
+                          <input type="file" name="product_image" accept="image/*"   id="file" onchange="loadFile(event)" class="form-control btn btn-primary">
                     </div>
                 </div>
                 
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    {% elif product is not None %}
+    <!-- {% elif product is not None %}
 
 <div class="container main-container">
         <div class="row text-white">
@@ -127,8 +127,17 @@
     </div>
 
     {% endif %}
-
+ -->
 
 </main>
     
+{% endblock %}
+
+{% block js%}
+<script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output-image');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
 {% endblock %}

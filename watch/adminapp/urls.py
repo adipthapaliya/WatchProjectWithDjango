@@ -27,6 +27,11 @@ urlpatterns = [
 
     path('getmessage',views.getmessage),
 
+    path('login/superuser',views.login_superuser),
+    path('logout',views.log_out),
+
+
+
 
     
 
