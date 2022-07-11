@@ -1,0 +1,58 @@
+{% extends 'admin/base.html'%}
+
+{% block title %} A Watcher  || Order {% endblock %} 
+
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/user/cart.css' %}"> {% endblock %}
+
+{% block content %}
+<main>
+
+  <div class="container">
+
+  </div>
+
+    <div class="container text-white main-container">
+        
+        <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col"> SN </th>
+                <th scope="col">Prodcut Image</th>
+                <th scope="col">Prodcut Name</th>
+                <th scope="col">Customer Info</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for buys in buy %}
+
+               
+
+              <tr>
+                <th scope="row">1</th>
+                <td ><img src="/{{items.product_image}}" alt="" srcset="" width="300" height="200"></td>
+                <td>{{items.product_name}}</td>
+                <td>{{items.product_price}}</td>
+                <td>
+                    <a href="/item/details/{{items.id}}"><button type="button" class="btn btn-primary">Details</button></a>
+                    <a href="/user/cart_product_delete/{{items.id}}/{{user.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+
+                </td>
+              </tr>
+             
+
+            
+
+              {% endfor %}
+              
+            </tbody>
+          </table>
+
+
+
+    </div>
+
+</main>
+{% endblock %}

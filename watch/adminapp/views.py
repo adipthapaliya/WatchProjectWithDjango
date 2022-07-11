@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
 
-from item.models import ProductModel
+from item.models import BuyProductModel, ProductModel
 from adminapp.form import MessageForm
 from adminapp.models import MessageModel
 
@@ -69,3 +69,12 @@ def login_superuser(request):
 def log_out(request):
     logout(request)
     return redirect('/admin')
+
+@login_required(login_url='/admin')
+
+def cart(request):
+
+    buy = BuyProductModel.objects.all()
+    item = ProductModel.objects.all()
+    user = User.objects.all()
+    return render(request,'user/cart.html',{'cart':cart,'item':item,'user':user})

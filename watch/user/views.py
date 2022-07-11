@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
 
-from item.models import ProductModel
+from item.models import BuyProductModel, ProductModel
 from user.models import UserCartModel
 from user.form import CartForm
 
@@ -81,8 +81,12 @@ def addtocart(request,id,uid):
     return redirect('/user/cart/1')
 
 
-def  buynow(request,id):
-    pass
+def  buynow(request,id,uid):
+    data =  BuyProductModel(product_id_id=id, user_id_id=uid )
+    data.save()
+
+    return redirect('/user/cart/1')
+
 
 
 def cart(request,id):
