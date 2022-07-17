@@ -22,6 +22,7 @@ urlpatterns = [
     path('edit/<int:id>',views.edit),
     path('update/<int:id>',views.update),
     path('details/<int:id>',views.details),
+    path('buy_delete/<int:id>/<int:uid>',views.delete_buy)
 
 
     

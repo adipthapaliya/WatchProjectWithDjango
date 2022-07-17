@@ -38,6 +38,8 @@ def message(request):
     message = MessageModel.objects.all()
     return render(request,'admin/message.html',{'message':message})
 
+@login_required(login_url='/admin')
+
 def getmessage(request):
     data = MessageForm(request.POST)
     data.save()
@@ -78,3 +80,13 @@ def cart(request):
     item = ProductModel.objects.all()
     user = User.objects.all()
     return render(request,'user/cart.html',{'cart':cart,'item':item,'user':user})
+
+
+def order(request):
+    
+    order = BuyProductModel.objects.select_related('product_id','user_id')
+    product = ProductModel.objects.all()
+    user = User.objects.raw('select * from users')
+
+
+    return render(request,'admin/order.html',{'order':order})

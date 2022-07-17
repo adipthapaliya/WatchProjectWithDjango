@@ -1,13 +1,15 @@
 {% extends 'admin/base.html'%}
+{% block order %} active  {% endblock %}
+
 
 {% block title %} A Watcher  || Order {% endblock %} 
 
 {% load static %}
 
-{% block css %} <link rel="stylesheet" href="{% static 'css/user/cart.css' %}"> {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/admin/cart.css' %}"> {% endblock %}
 
 {% block content %}
-<main>
+<main class="bg-dark">
 
   <div class="container">
 
@@ -26,18 +28,24 @@
               </tr>
             </thead>
             <tbody>
-                {% for buys in buy %}
+                {% for orders in order %}
 
                
 
               <tr>
                 <th scope="row">1</th>
-                <td ><img src="/{{items.product_image}}" alt="" srcset="" width="300" height="200"></td>
-                <td>{{items.product_name}}</td>
-                <td>{{items.product_price}}</td>
+                <td ><img src="/{{orders.product_id.product_image}}" alt="" srcset="" width="300" height="200"></td>
+                <td>{{orders.product_id.product_price}}</td>
                 <td>
-                    <a href="/item/details/{{items.id}}"><button type="button" class="btn btn-primary">Details</button></a>
-                    <a href="/user/cart_product_delete/{{items.id}}/{{user.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                  <ul>
+                    <li style="list-style: none;">Name: {{orders.user_id.first_name}}</li>
+                    <li style="list-style: none;">Phone: {{orders.user_id.email}}</li>
+
+                  </ul>
+                </td>
+                <td>
+                    
+                    <a href="/item/buy_delete/{{orders.product_id.id}}/{{orders.user_id.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
 
                 </td>
               </tr>
@@ -55,4 +63,9 @@
     </div>
 
 </main>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/user/shopType.js' %}"></script>
+
 {% endblock %}

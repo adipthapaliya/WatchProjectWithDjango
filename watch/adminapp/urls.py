@@ -30,6 +30,9 @@ urlpatterns = [
     path('login/superuser',views.login_superuser),
     path('logout',views.log_out),
 
+        path('order',views.order),
+
+
 
 
 

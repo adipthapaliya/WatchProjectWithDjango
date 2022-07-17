@@ -20,6 +20,7 @@ class BuyProductModel(models.Model):
     id = models.AutoField(auto_created=True,primary_key=True)
     product_id = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField(max_length=10,default='delivered')
 
     class Meta:
         db_table= 'buy'

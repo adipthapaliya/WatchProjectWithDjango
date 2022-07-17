@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+
 
 from item.models import BuyProductModel, ProductModel
 from user.models import UserCartModel
@@ -33,14 +35,20 @@ def login_user(request):
         user = authenticate(request,username=username, password=password)
 
         if user is not None:
-            log(request,user)
-            return redirect('/home')
+            if user.is_superuser == 0:
+
+                log(request,user)
+                return redirect('/home')
+
+            else:
+                return redirect("/user/login")
+
 
         else:
-            return render(request, '404.html', status=404)
+            return redirect("/user/login")
 
     else:
-        return render(request, '404.html', status=404)
+            return redirect("/user/login")
 
 
 def register(request):
@@ -70,31 +78,44 @@ def log_out(request):
 
 
 def shop(request):
+    print(request)
     product= ProductModel.objects.all()
     return render(request,'user/shop.html',{'product' : product})
+
+@login_required(login_url='/admin')
 
 def addtocart(request,id,uid):
     data =  UserCartModel(product_id_id=id, user_if_id=uid )
     data.save()
 
     cart = UserCartModel.objects.filter(user_if_id=id)
-    return redirect('/user/cart/1')
+    url_id = "/user/cart/%s"%(uid)
 
+
+    return redirect(url_id)
+
+@login_required(login_url='/user/login')
 
 def  buynow(request,id,uid):
     data =  BuyProductModel(product_id_id=id, user_id_id=uid )
     data.save()
 
-    return redirect('/user/cart/1')
+    url_id = "/user/cart/%s"%(uid)
+    return redirect(url_id)
 
 
+@login_required(login_url='/user/login')
 
 def cart(request,id):
 
     cart = UserCartModel.objects.filter(user_if_id=id)
     item = ProductModel.objects.all()
-    return render(request,'user/cart.html',{'cart':cart,'item':item})
 
+    buy = BuyProductModel.objects.filter(user_id_id=id)
+
+    return render(request,'user/cart.html',{'cart':cart,'item':item,'buy':buy})
+
+@login_required(login_url='/user/login')
 
 def delete_cart(request,id,uid):
         data = UserCartModel.objects.filter(product_id_id=id,user_if_id=uid)
@@ -102,7 +123,9 @@ def delete_cart(request,id,uid):
 
         cart = UserCartModel.objects.filter(user_if_id=id)
         item = ProductModel.objects.all()
-        return redirect('/user/cart/1')
+
+        url_id = "/user/cart/%s"%(uid)
+        return redirect(url_id)
 
 
 

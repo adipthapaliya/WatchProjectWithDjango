@@ -24,12 +24,12 @@
     transition: all 100ms ease-in-out;
 }
 
-.our-shop li:first-child a{
-    color: #f33f3f;
+.active-shop{
+    color: #f33f3f !important;
     font-size: 1.1rem;
 }
 
-.our-shop li:not(.our-shop li:first-child) a:hover{
+.our-shop li a:not(.active-shop):hover{
     color: #f33f3f;
     font-size: 1.1rem;
 }
@@ -55,3 +55,12 @@
     text-decoration: none;
     color: #343a40;
  } 
+
+ .shop-list-display{
+    display: none;
+ }
+
+ .shop-list-display-block{
+    display: block;
+ }
+

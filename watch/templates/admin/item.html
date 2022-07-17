@@ -1,4 +1,5 @@
 {% extends 'admin/base.html'%}
+{% block item %} active  {% endblock %}
 
 {% block title %} Admin || Add Item || A Watcher  {% endblock %}
 
@@ -16,16 +17,15 @@
         <div class="row mb-5 our-shop">
           <div class="col-12 mb-3">
             <ul class="d-flex justify-content-around ">
-              <li class="active-shop">All Product</li>
-              <li class="">Newest</li>
-              <li class="">Oldest</li>
-              <li class="">Sale</li>
+              <li class=""><a class="shop-all">All Product</a> </li>
+              <li class=""><a class="shop-new">Newest</a> </li>
+              <li class=""><a class="shop-old">Oldest</a> </li>
             </ul>
 
             <hr />
           </div>
         </div>
-        <div class="row mb-5 shop-list">
+        <div class="row mb-5 shop-all shop-list-all">
             {%for products in product%}
 
             <div class="col-lg-4 col-md-6 mb-5">
@@ -47,6 +47,52 @@
             
             {% endfor %}
         </div>
+
+        <div class="row mb-5 shop-new shop-list-new">
+          {%for products in product%}
+
+          <div class="col-lg-4 col-md-6 mb-5">
+              <div>
+                  <div class="watch">
+                      <img src="/{{products.product_image}}" alt="">
+                      
+                  </div>
+                  <div class="info text-center">
+                    <h2 class="text-white">{{products.product_name}}</h2>
+                    <p><b>RS {{products.product_price}}</b></p>
+                  </div>
+                  <div class="watch-buttons ">
+                      <a href="/item/edit/{{products.id}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                      <a href="/item/delete/{{products.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                  </div>
+              </div>
+          </div>
+          
+          {% endfor %}
+      </div>
+
+      <div class="row mb-5 shop-old shop-list-old">
+        {%for products in product%}
+
+        <div class="col-lg-4 col-md-6 mb-5">
+            <div>
+                <div class="watch">
+                    <img src="/{{products.product_image}}" alt="">
+                    
+                </div>
+                <div class="info text-center">
+                  <h2 class="text-white">{{products.product_name}}</h2>
+                  <p><b>RS {{products.product_price}}</b></p>
+                </div>
+                <div class="watch-buttons ">
+                    <a href="/item/edit/{{products.id}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                    <a href="/item/delete/{{products.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
       </div>
     </div>
   </main>

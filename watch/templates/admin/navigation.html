@@ -17,21 +17,21 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="menu-option navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active fs-5" aria-current="page" href="/admin/home"
+                    <a class="nav-link {% block home %} {% endblock%} fs-5" aria-current="page" href="/admin/home"
                       >Home</a
                     >
                   </li>
               <li class="nav-item">
-                <a class="nav-link  fs-5" aria-current="page" href=""
+                <a class="nav-link {% block order %} {% endblock%} fs-5" aria-current="page" href="/admin/order"
                   >See Order</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-5" href="/admin/additem"> Add Item</a>
+                <a class="nav-link {% block additem %} {% endblock%} fs-5" href="/admin/additem"> Add Item</a>
               </li>
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle fs-5"
+                  class="nav-link {% block item %} {% endblock%} dropdown-toggle fs-5"
                   href="/admin/item"
                   id="navbarDropdown"
                   role="button"
@@ -55,7 +55,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link fs-5" href="/admin/message">Message</a>
+                <a class="nav-link {% block message %} {% endblock%}fs-5" href="/admin/message">Message</a>
               </li>
            
           </div>

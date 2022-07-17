@@ -1,5 +1,7 @@
 {% extends 'admin/base.html'%}
 
+{% block home %} active  {% endblock %}
+
 {% block title %} Admin || Home || A Watcher  {% endblock %}
 
 {% load static %}
@@ -17,7 +19,7 @@
         <h1> Welcome to Admin Panel</h1>
         <hr class="w-50" style="margin: 2vh auto;">
         <a href="/admin/additem"><button type="button" class="btn btn-primary mb-3">Add Item</button></a>
-        <a href=""><button type="button" class="btn btn-primary mb-3">See Order</button></a>
+        <a href="/admin/order"><button type="button" class="btn btn-primary mb-3">See Order</button></a>
         <a href="#"><button type="button" class="btn btn-primary mb-3">Item List</button></a>
 
         <hr class="w-50" style="margin: 2vh auto;">
